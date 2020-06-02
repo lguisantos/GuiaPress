@@ -1,0 +1,64 @@
+<%-include('../../partials/Header')%>
+<%-include('../../partials/Navbar')%>
+
+<script>
+    function deleteConfirm(event, form) {
+        /**
+         * @function preventDefault Cancela a ação padrão, neste caso a ação de submissão
+         */
+        event.preventDefault()
+        const decision = confirm('Do you really wants to delete this category?');
+
+        if (decision) {
+            return form.submit(); console.log('You have to confirmed the delection!');
+
+        } else {
+            return console.log('You have to canceled the action!');
+
+        }
+    }
+</script>
+
+<div class="container">
+    <hr>
+    <h2>Categories</h2>
+    <a class="btn btn-success" href="/admin/category/new">Create new Category</a>
+    <hr>
+    <!-- Creating tables with Bootstrap -->
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Título</th>
+                <th>Slug</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            <% categories.forEach(category => {%>
+            <tr>
+                <th><%= category.id %> </th>
+                <th><%= category.title %></th>
+                <th><%= category.slug %></th>
+                <th>
+                   
+                       
+                        <a href="/admin/categories/edit/<%= category.id %> " class="btn btn-warning">Edit</a>
+                  
+
+                    <!-- Enviando id da categoria clicada -->
+                    <!-- Criar um formulario é apenas uma estratégia -->
+                    <!-- O parâmetro this envia o próprio formulário -->
+                    <form method="POST" action="/categories/delete" onsubmit="deleteConfirm(event, this)" style="display: inline;">
+                        <input type="hidden" name="id" value="<%= category.id %>">
+                        <button class="btn btn-danger">Delete</button>
+                    </form>
+                </th>
+            </tr>
+            <% }); %>
+
+        </tbody>
+    </table>
+</div>
+<%-include('../../partials/Footer')%>

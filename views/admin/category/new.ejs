@@ -1,0 +1,25 @@
+<%-include('../../partials/Header')%>
+<%-include('../../partials/Navbar')%>
+<div class="container">
+    <hr>
+
+    <div class="card">
+
+        <div class="card-header">
+            <h2>Create a new category</h2>
+        </div>
+        <div class="card-body">
+            <!-- Method used to the form and address -->
+            <form method="POST" action="/categories/save">
+                <input class="form-control" 
+                       type="text" 
+                       name="title" 
+                       placeholder="Insert the category name:"
+                       style="margin-bottom: 10px;">
+
+                <button class="btn btn-success">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+<%-include('../../partials/Footer')%>

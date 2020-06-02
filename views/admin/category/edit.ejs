@@ -1,0 +1,21 @@
+<%-include('../../partials/Header')%>
+<%-include('../../partials/Navbar')%>
+<div class="container">
+    <hr>
+
+    <div class="card">
+
+        <div class="card-header">
+            <h2>Edit the category</h2>
+        </div>
+        <div class="card-body">
+            <!-- Method used to the form and address -->
+            <form method="POST" action="/categories/update">
+                <input class="form-control" type="text" name="title" placeholder="Insert the category name:" style="margin-bottom: 10px;" value="<%= categories.title %> ">
+                <input class="form-control" type="hidden" name="id" placeholder="Insert the category name:" style="margin-bottom: 10px;" value="<%= categories.id %> ">
+                <button class="btn btn-success">Update</button>
+            </form>
+        </div>
+    </div>
+</div>
+<%-include('../../partials/Footer')%>
