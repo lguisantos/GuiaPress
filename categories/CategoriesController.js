@@ -2,7 +2,7 @@ const express = require('express');
 const slugify = require('slugify');
 
 const router = express.Router();
-const CategoriesModel = require('../categories/models/CategoriesModel');
+const CategoriesModel = require('./models/CategoriesModel');
 
 router.get('/admin/category/new', (req, res) => {
     res.render('admin/category/new');
@@ -90,7 +90,8 @@ router.post('/categories/update', (req, res) => {
     const title = req.body.title;
 
     CategoriesModel.update({
-        title: title
+        title: title,
+        slug: slugify(title)
     }, {
         where: {
             id: id

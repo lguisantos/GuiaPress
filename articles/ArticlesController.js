@@ -1,12 +1,19 @@
 const express = require('express');
-const router = express.Router()
+const router = express.Router();
+const CategoriesModel = require('../categories/models/CategoriesModel')
 
-router.get('/articles', (req, res)=>{
+router.get('/articles', (req, res) => {
     return res.send('Article Test');
 });
 
-router.get('/testArticle', (req, res)=>{
-    return res.send('Test Router Article');
+router.get('/admin/articles/new', (req, res) => {
+
+    CategoriesModel.findAll().then(categories => {
+
+        res.render('admin/articles/new', {
+            categories: categories
+        });
+    })
 })
 
 module.exports = router;
