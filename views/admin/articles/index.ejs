@@ -7,22 +7,24 @@
          * @function preventDefault Cancela a ação padrão, neste caso a ação de submissão
          */
         event.preventDefault()
-        const decision = confirm('Do you really wants to delete this category?');
+        const decision = confirm('Do you really wants to delete this Article?');
 
         if (decision) {
-            return form.submit(); console.log('You have to confirmed the delection!');
+            return form.submit();
+            console.log('You have to confirmed the delection!');
 
         } else {
             return console.log('You have to canceled the action!');
 
         }
     }
+
 </script>
 
 <div class="container">
     <hr>
-    <h2>Categories</h2>
-    <a class="btn btn-success" href="/admin/category/new">Create new Category</a>
+    <h2>Articles</h2>
+    <a class="btn btn-success" href="/admin/articles/new">Create new Article</a>
     <hr>
     <!-- Creating tables with Bootstrap -->
     <table class="table table-bordered">
@@ -31,32 +33,27 @@
                 <th>ID</th>
                 <th>Título</th>
                 <th>Slug</th>
+                <th>Category</th>
                 <th>Ações</th>
             </tr>
         </thead>
         <tbody>
-
-            <% categories.forEach(category => {%>
+            <% article.forEach(article =>{ %>
             <tr>
-                <th><%= category.id %> </th>
-                <th><%= category.title %></th>
-                <th><%= category.slug %></th>
-                <th>
-
-                    <a href="/admin/categories/edit/<%= category.id %> " class="btn btn-warning">Edit</a>
-
-                    <!-- Enviando id da categoria clicada -->
-                    <!-- Criar um formulario é apenas uma estratégia -->
-                    <!-- O parâmetro this envia o próprio formulário -->
-                    <form method="POST" action="/categories/delete" onsubmit="deleteConfirm(event, this)"
+                <td><%= article.id %></td>
+                <td><%= article.title %></td>
+                <td><%= article.slug %></td>
+                <td><%= article.category.title %></td>
+                <td>
+                    <a href="/articles/edit/<%= article.id %> " class="btn btn-warning">Edit</a>
+                    <form action="/articles/delete" method="POST" onclick="deleteConfirm(event, this)"
                         style="display: inline;">
-                        <input type="hidden" name="id" value="<%= category.id %>">
+                        <input type="hidden" name="id" value="<%= article.id %> ">
                         <button class="btn btn-danger">Delete</button>
                     </form>
-                </th>
+                </td>
             </tr>
             <% }); %>
-
         </tbody>
     </table>
 </div>

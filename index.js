@@ -1,6 +1,7 @@
+const bodyParser = require('body-parser');
 const express = require('express');
 const app = express();
-const bodyParser = require('body-parser');
+
 const categoriesController = require('./categories/CategoriesController');
 const articlesController = require('./articles/ArticlesController')
 
@@ -13,7 +14,7 @@ const connection = require('./database/Connection');
 
 //Database connection    //Seccess
 connection.authenticate().then(() => console.log('Database connected'))
-                        //Error
+                         //Error
                          .catch((error) => console.log(`Connection erro: ${error}`));
 
 //View engine

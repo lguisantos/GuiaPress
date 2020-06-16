@@ -1,44 +1,48 @@
-<%-include('../../partials/Header')%>
-<%-include('../../partials/Navbar')%>
+</html>
+    <%-include('../../partials/Header')%>
+    <%-include('../../partials/Navbar')%>
 
-<div class="container">
-    <hr>
+    <div class="container">
+        <hr>
 
-    <div class="card">
+        <div class="card">
 
-        <div class="card-header">
-            <h2>Create a new Article</h2>
-        </div>
-        <div class="card-body">
-            <!-- Method used to the form and address -->
-            <form method="POST" action="/article/save">
-                <input class="form-control" type="text" name="title" placeholder="Insert the category name:"
-                    style="margin-bottom: 10px;">
+            <div class="card-header">
+                <h2>Create a new Article</h2>
+            </div>
+            <div class="card-body">
+                <!-- Method used to the form and address -->
+                <form method="POST" action="/article/save">
+                    <input class="form-control" type="text" name="title" placeholder="Insert the category name:"
+                        style="margin-bottom: 10px;">
 
-                <textarea class="form-control" name="body" cols="30" rows="10" placeholder="Write down here!"
-                    style="margin-bottom: 10px;" id="mytextarea">
-                </textarea>
-                <label for="categories">Categiries</label>
-                <select name="categories" class="form-control" id="" style="margin-bottom: 10px;">
+                    <textarea class="form-control" name="body" cols="30" rows="10" placeholder="Write down here!"
+                        style="margin-bottom: 10px;" id="mytextarea">
+                    </textarea>
+                    <label for="categories">Categories</label>
+                    <select name="categories" class="form-control" id="" style="margin-bottom: 10px;">
 
-                    <% categories.forEach(element => { %>
-                    <option value="<%= element.id %> ">
-                        <%= element.title %>
-                    </option>
-                    <% }); %>
+                        <% categories.forEach(element => { %>
+                        <option value="<%= element.id %> ">
+                            <%= element.title %>
+                        </option>
+                        <% }); %>
 
-                </select>
-                <button class="btn btn-success">Submit</button>
-            </form>
+                    </select>
+                    <button class="btn btn-success">Submit</button>
+                </form>
+            </div>
         </div>
     </div>
-</div>
-<%-include('../../partials/Footer')%>
+    <%-include('../../partials/Footer')%>
 
-<!-- it's not working -->
-<script src="/tinymce/tinymce.min.js"></script>
-<script>
-    tinymce.init({
-        selector: '#mytextarea'
-    });
-</script>
+    <!-- it's not working -->
+    <script src="/tinymce/tinymce.min.js"></script>
+    <script>
+        console.log('Teste Tinymce =>   ', tinymce)
+
+        tinymce.init({
+            selector: '#mytextarea'
+        });
+    </script>
+<html>

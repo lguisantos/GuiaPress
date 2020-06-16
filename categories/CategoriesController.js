@@ -64,7 +64,6 @@ router.post('/categories/delete', (req, res) => {
 
 router.get('/admin/categories/edit/:id', (req, res) => {
     var id = req.params.id;
-    console.log('kasldmakmsdlkamsldkmasldkmlaskmdlksamdlksamd =>', req.params.id)
 
     if (isNaN(id)) return res.redirect('/');
 
