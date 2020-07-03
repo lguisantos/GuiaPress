@@ -15,7 +15,6 @@ router.get('/admin/articles', (req, res) => {
         include: [{
             model: Category
         }]
-
     }).then(article => {
 
         return res.render('admin/articles/index', {
@@ -43,7 +42,7 @@ router.post('/article/save', (req, res) => {
 
     Article.create({
         title: title,
-        body: body,
+        body: body[0],
         slug: Slugfy(title),
 
         // Chave estrangeira
@@ -51,7 +50,6 @@ router.post('/article/save', (req, res) => {
     }).then(() => {
         res.redirect('/admin/articles');
     });
-
 });
 
 router.post('/articles/delete', (req, res) => {
@@ -68,14 +66,14 @@ router.post('/articles/delete', (req, res) => {
             }
         }).then(() => {
             res.redirect('/admin/articles');
-        })
-
+        });
     } else {
         res.redirect('/admin/articles')
     }
 });
 
 router.post('/articles/edit/:id', (req, res) => {
+    res.render('admin/articles/edit');
+});
 
-})
 module.exports = router;

@@ -1,0 +1,19 @@
+<%- include('partials/Header.ejs') %>
+<%- include('partials/HomeNavbar.ejs') %>
+
+<body>
+    <div class="container">
+        <div class="card" style="margin-top: 15px;">
+            <div class="card-header">
+                <h1><%= article.title %></h1> 
+            </div>
+
+            <div class="card-body">
+                <!-- Quando usamos <%- %> do ejs, ele mantem a formatação da variável caso ela exista -->
+                <%- article.body %>
+            </div>
+        </div>
+    </div>
+</body>
+
+<%- include('partials/Footer.ejs') %>
